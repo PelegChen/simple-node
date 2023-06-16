@@ -14,17 +14,19 @@ const port = 3000;
 // Middleware to parse JSON requests
 app.use(express.json());
 
-// Home page route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages/index.html'));
 });
 
-// Login page route
-app.get('/login', (req, res) => {
-    res.send('Please login to continue.');
+app.get('/login-link', (req, res) => {
+    let err = new Error('You are not authenticated!');
+    res.setHeader('WWW-Authenticate', 'Basic');
+    res.send(401);
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.get('/login-link', (req, res) => {
+    let err = new Error('You are not authenticated!');
+    res.setHeader('WWW-Authenticate', 'Basic');
+    res.send(401);
 });
+app.listen(port, () => {});
