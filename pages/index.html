@@ -9,14 +9,31 @@
 <h1>Simple node server</h1>
 <p>
     <button onclick="loginFetch()"> Send ajax to login-fetch</button>
+    <br/>
+    (post with fetch requesting  "Content-Type": "application/json",)
 
 </p>
 <p>
-    <a href="/login-link">/login-link</a>
+    <a href="/login-link">/login-link </a>
+    <br/>
+    (get) with html browser default
 </p>
 <script>
-    function loginFetch () {
-        alert('d')
+
+    async function loginFetch(url = "", data = {}) {
+
+        const response = await fetch('/login-ajax', {
+            method: "POST",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+
+        });
+        console.dir(response)
+
     }
 </script>
 </body>

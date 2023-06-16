@@ -19,13 +19,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login-link', (req, res) => {
-    let err = new Error('You are not authenticated!');
     res.setHeader('WWW-Authenticate', 'Basic');
     res.send(401);
 });
 
-app.get('/login-link', (req, res) => {
-    let err = new Error('You are not authenticated!');
+app.post('/login-ajax', (req, res) => {
     res.setHeader('WWW-Authenticate', 'Basic');
     res.send(401);
 });
