@@ -1,6 +1,8 @@
 // server.js
 
 import express from 'express';
+import * as path from "path";
+
 
 const app = express();
 const port = 3000;
@@ -11,6 +13,9 @@ app.use(express.json());
 // Home page route
 app.get('/', (req, res) => {
     res.send('Welcome to the home page!');
+});
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 // Login page route
